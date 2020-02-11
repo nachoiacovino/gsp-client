@@ -1,0 +1,12 @@
+.SearchBar {
+  display: inline-flex;
+  padding: 6px 12px;
+  border: 1px solid grey;
+  border-radius: 20px;
+}
+.SearchBar .SearchBar-icon {
+  margin-right: 5px;
+}
+.SearchBar .SearchBar-input {
+  border: none;
+}

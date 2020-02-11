@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import './App.css'
+import Contacts from './pages/Contacts/Contacts'
 
 const App = () => {
+    const [contacts, setContacts] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await axios.get("http://localhost:3001/contacts")
+            setContacts(res.data)
+        }
+        fetchData()
+    }, [])
+
+    // console.log(contacts)
+
     return (
         <div>
-            Hello world
+            <Contacts contacts={contacts} />
         </div>
     )
 }
