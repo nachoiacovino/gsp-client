@@ -1,25 +1,34 @@
 import React from 'react'
 import Contact from '../Contact/Contact'
 import './ContactGrid.css'
+import NavButtons from '../NavButtons/NavButtons'
 
 const ContactGrid = () => {
     return (
         <div className="ContactGrid">
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
+            <div className="ContactGrid-grid">
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+                <Contact />
+            </div>
+            <NavButtons />
         </div>
     )
 }

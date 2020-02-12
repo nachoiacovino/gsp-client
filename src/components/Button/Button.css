@@ -1,0 +1,11 @@
+.Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2vw;
+  height: 2.6vh;
+  margin-bottom: 0.8vh;
+  border: 1px solid black;
+  background-color: grey;
+  border-radius: 20px;
+}

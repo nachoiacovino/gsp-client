@@ -1,6 +1,14 @@
 .ContactList {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 92vh;
   width: 22vw;
   border: 1px solid black;
+}
+.ContactList .ContactList-contacts {
+  padding: 20px;
+}
+.ContactList .ContactList-contacts .ContactList-contact {
+  margin-bottom: 0.4vh;
 }

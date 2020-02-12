@@ -1,0 +1,8 @@
+.NavButtons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3vh;
+}
+.NavButtons .Navbuttons-pages {
+  margin: 0 0.5vw;
+}

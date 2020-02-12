@@ -1,8 +1,15 @@
 .ContactGrid {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 88vh;
+  border: 1px solid black;
+}
+.ContactGrid .ContactGrid-grid {
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  border: 1px solid black;
+  align-items: center;
   width: 70;
   padding: 10px;
 }

@@ -1,8 +1,17 @@
 .ContactList {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 92vh;
     width: 22vw;
     border: 1px solid black;
 
-    .ContactList-contact {}
+    .ContactList-contacts {
+        padding: 20px;
+
+        .ContactList-contact {
+            margin-bottom: .4vh;
+        }
+    }
+
 }
