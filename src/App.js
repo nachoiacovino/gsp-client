@@ -14,7 +14,7 @@ const App = () => {
         fetchData()
     }, [])
 
-    // console.log(contacts)
+    console.log(contacts.slice(0,3))
 
     return (
         <div>

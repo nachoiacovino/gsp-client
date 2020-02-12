@@ -1,0 +1,15 @@
+.LeftColumn {
+  display: flex;
+  flex-direction: column;
+}
+.LeftColumn .LeftColumn-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8vh;
+  padding: 1vh;
+  border: 1px solid black;
+}
+.LeftColumn .LeftColumn-flex {
+  display: flex;
+}

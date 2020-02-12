@@ -10,5 +10,9 @@
 
     .SearchBar-input {
         border: none;
+
+        &.leftColumn {
+            width: 21vw;
+        }
     }
 }
