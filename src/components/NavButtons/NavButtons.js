@@ -2,15 +2,19 @@ import React from 'react'
 import './NavButtons.css'
 import Button from '../Button/Button'
 
-const NavButtons = ({ prevPage, nextPage, currentPage, totalPages }) => {
+const NavButtons = ({currentPage, setCurrentPage, totalPages }) => {
+    const changePage = direction => {
+        if (direction === "next" && currentPage < totalPages) setCurrentPage(currentPage + 1)
+        else if (direction === "previous" && currentPage > 1) setCurrentPage(currentPage - 1)
+    }
+
     return (
         <div className="NavButtons">
-            <Button character="<" />
+            <Button handleClick={() => changePage("previous")} character="<" />
             <div className="Navbuttons-pages">
-                1/3
+                {currentPage}/{totalPages}
             </div>
-            <Button character=">" />
-
+            <Button handleClick={() => changePage("next")} character=">" />
         </div>
     )
 }
