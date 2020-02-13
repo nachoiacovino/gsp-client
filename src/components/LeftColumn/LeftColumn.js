@@ -4,7 +4,7 @@ import LetterFilter from '../LetterFilter/LetterFilter'
 import ContactList from '../ContactList/ContactList'
 import './LeftColumn.css'
 
-const LeftColumn = ({ contacts }) => {
+const LeftColumn = ({ contacts, selectContact }) => {
     return (
         <div className="LeftColumn">
             <div className="LeftColumn-search">
@@ -12,7 +12,7 @@ const LeftColumn = ({ contacts }) => {
             </div>
             <div className="LeftColumn-flex">
                 <LetterFilter />
-                <ContactList contacts={contacts} />
+                <ContactList contacts={contacts} selectContact={selectContact} />
             </div>
         </div>
     )

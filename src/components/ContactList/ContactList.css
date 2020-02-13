@@ -11,4 +11,5 @@
 }
 .ContactList .ContactList-contacts .ContactList-contact {
   font-size: 1.15vh;
+  cursor: pointer;
 }

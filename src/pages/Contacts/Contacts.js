@@ -22,11 +22,17 @@ const Contacts = () => {
         setSelectedContact(contacts[0])
     }, [contacts])
 
+    const selectContact = id => {
+        setSelectedContact(contacts.filter(contact => contact.id === id)[0])
+    }
+
+    console.log("selectedContact", selectedContact)
+
     console.log(contacts.slice(0,3))
 
     return (
         <div className="Contacts">
-            <LeftColumn contacts={contacts} setSelectedContact={setSelectedContact} />
+            <LeftColumn contacts={contacts} selectContact={selectContact} />
             <RightColumn contacts={contacts} selectedContact={selectedContact} />
         </div>
     )
