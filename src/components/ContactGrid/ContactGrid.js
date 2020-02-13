@@ -23,7 +23,6 @@ const ContactGrid = ({ contacts, selectedContact }) => {
 
     useEffect(() => {
         setTotalPages(Math.ceil(filteredContacts.length / contactsPerPage))
-        console.log(filteredContacts)
     }, [filteredContacts.length])
 
     useEffect(() => {

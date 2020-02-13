@@ -8,9 +8,8 @@ const Contacts = () => {
     const [contacts, setContacts] = useState([])
     const [selectedContact, setSelectedContact] = useState([])
 
-    const dynamicSort = property => (a, b) => a[property].localeCompare(b[property])  
-
     useEffect(() => {
+        const dynamicSort = property => (a, b) => a[property].localeCompare(b[property])  
         const fetchData = async () => {
             const res = await axios.get("http://localhost:3001/contacts")
             setContacts(res.data.sort(dynamicSort("name")))
