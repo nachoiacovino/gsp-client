@@ -22,7 +22,7 @@ const Contacts = () => {
     return (
         <div className="Contacts">
             <LeftColumn contacts={contacts} />
-            <RightColumn />
+            <RightColumn contacts={contacts} />
         </div>
     )
 }

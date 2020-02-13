@@ -3,11 +3,11 @@ import './RightColumn.css'
 import ContactGrid from '../ContactGrid/ContactGrid'
 import Header from '../Header/Header'
 
-const RightColumn = () => {
+const RightColumn = ({ contacts }) => {
     return (
         <div className="RightColumn">
             <Header />
-            <ContactGrid />
+            <ContactGrid contacts={contacts} />
         </div>
     )
 }

@@ -1,11 +1,11 @@
 import React from 'react'
 import './Contact.css'
 
-const Contact = ({ name, image }) => {
+const Contact = ({ name, avatar }) => {
     return (
         <div className="Contact">
-            <img className="Contact-img" src="https://s3.amazonaws.com/uifaces/faces/twitter/dvdwinden/128.jpg" alt=""/>
-            Tomas Mercado
+            <img className="Contact-img" src={avatar} alt={name}/>
+            {name}
         </div>
     )
 }
