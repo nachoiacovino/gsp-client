@@ -17,7 +17,9 @@ const ContactList = ({ contacts, selectContact }) => {
         <div className="ContactList">
             <div className="ContactList-contacts">
                 {listContacts.map(({ id, name }) => 
-                    <div onClick={() => selectContact(id)} key={id} className="ContactList-contact">{name}</div>
+                    <div onClick={() => selectContact(id)} key={id} className="ContactList-contact">
+                        {name}
+                    </div>
                 )}
             </div>
             <NavButtons currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />

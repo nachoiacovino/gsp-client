@@ -7,7 +7,7 @@ const RightColumn = ({ contacts, selectedContact }) => {
     return (
         <div className="RightColumn">
             <Header selectedContact={selectedContact} />
-            <ContactGrid contacts={contacts} />
+            <ContactGrid contacts={contacts} selectedContact={selectedContact} />
         </div>
     )
 }

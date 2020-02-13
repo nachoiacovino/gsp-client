@@ -3,16 +3,29 @@ import Contact from '../Contact/Contact'
 import './ContactGrid.css'
 import NavButtons from '../NavButtons/NavButtons'
 
-const ContactGrid = ({ contacts }) => {
+const ContactGrid = ({ contacts, selectedContact }) => {
+    const [filteredContacts, setFilteredContacts] = useState([])
     const [gridContacts, setGridContacts] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const contactsPerPage = 20
     const totalPages = Math.floor(contacts.length / contactsPerPage)
 
+    const filterContacts = arr => {
+        const result = []
+        for (let i = 0; i < contacts.length; i++) {
+            if (arr.includes(contacts[i].id)) result.push(contacts[i])
+        }
+        return result
+    }
+
     useEffect(() => {
-        if (currentPage === 1) setGridContacts(contacts.slice(0, contactsPerPage))
-        else setGridContacts(contacts.slice(currentPage * contactsPerPage - contactsPerPage, currentPage * contactsPerPage))
-    }, [currentPage, contacts])
+        selectedContact && setFilteredContacts(filterContacts(selectedContact.connections))
+    }, [selectedContact])
+
+    useEffect(() => {
+        if (currentPage === 1) setGridContacts(filteredContacts.slice(0, contactsPerPage))
+        else setGridContacts(filteredContacts.slice(currentPage * contactsPerPage - contactsPerPage, currentPage * contactsPerPage))
+    }, [currentPage, filteredContacts])
 
     return (
         <div className="ContactGrid">
