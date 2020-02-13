@@ -6,7 +6,7 @@ const ContactList = ({ contacts, selectContact }) => {
     const [listContacts, setListContacts] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const contactsPerPage = 50
-    const totalPages = Math.floor(contacts.length / contactsPerPage)
+    const totalPages = Math.ceil(contacts.length / contactsPerPage)
 
     useEffect(() => {
         if (currentPage === 1) setListContacts(contacts.slice(0, contactsPerPage))

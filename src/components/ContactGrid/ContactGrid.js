@@ -8,9 +8,7 @@ const ContactGrid = ({ contacts, selectedContact }) => {
     const [gridContacts, setGridContacts] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const contactsPerPage = 20
-    const totalPages = Math.floor(contacts.length / contactsPerPage)
-
-    
+    const [totalPages, setTotalPages] = useState(0)
 
     useEffect(() => {
         const filterContacts = arr => {
@@ -22,6 +20,11 @@ const ContactGrid = ({ contacts, selectedContact }) => {
         }
         selectedContact && setFilteredContacts(filterContacts(selectedContact.connections))
     }, [contacts, selectedContact])
+
+    useEffect(() => {
+        setTotalPages(Math.ceil(filteredContacts.length / contactsPerPage))
+        console.log(filteredContacts)
+    }, [filteredContacts.length])
 
     useEffect(() => {
         if (currentPage === 1) setGridContacts(filteredContacts.slice(0, contactsPerPage))
