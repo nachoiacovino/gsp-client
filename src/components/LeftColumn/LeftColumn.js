@@ -23,7 +23,7 @@ const LeftColumn = ({ contacts, selectContact }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        selectContact(leftContacts[0].id)
+        if (leftContacts[0]) selectContact(leftContacts[0].id)
         resetSearch()
     }
 
