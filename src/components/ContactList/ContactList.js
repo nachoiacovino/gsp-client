@@ -4,7 +4,7 @@ import NavButtons from '../NavButtons/NavButtons'
 
 const ContactList = ({ contacts }) => {
     const [listContacts, setListContacts] = useState([])
-    const [currentPage, setCurrentPage] = useState(0)
+    const [currentPage, setCurrentPage] = useState(1)
     const contactsPerPage = 50
     const totalPages = Math.floor(contacts.length / contactsPerPage)
 
