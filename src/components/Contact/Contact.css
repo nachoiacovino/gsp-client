@@ -8,6 +8,7 @@
   padding: 12px;
   margin: 10px;
   border: 1px solid black;
+  cursor: pointer;
 }
 .Contact .Contact-img {
   display: block;

@@ -3,7 +3,7 @@ import Contact from '../Contact/Contact'
 import './ContactGrid.css'
 import NavButtons from '../NavButtons/NavButtons'
 
-const ContactGrid = ({ filteredContacts }) => {
+const ContactGrid = ({ selectContact, filteredContacts }) => {
     const [gridContacts, setGridContacts] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const contactsPerPage = 20
@@ -24,7 +24,7 @@ const ContactGrid = ({ filteredContacts }) => {
         <div className="ContactGrid">
             <div className="ContactGrid-grid">
                 {gridContacts.map(({ id, name, avatar }) => 
-                        <Contact key={id} name={name} avatar={avatar} />
+                        <Contact key={id} name={name} avatar={avatar} selectContact={() => selectContact(id)} />
                 )}
             </div>
             <NavButtons currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />

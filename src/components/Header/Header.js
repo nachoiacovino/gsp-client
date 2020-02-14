@@ -4,7 +4,7 @@ import SearchBar from '../SearchBar/SearchBar'
 import useInputState from '../../hooks/useInputState'
 
 
-const Header = ({ selectedContact, searchContacts, setFilteredContacts }) => {
+const Header = ({ selectContact, selectedContact, searchContacts, filteredContacts, setFilteredContacts }) => {
     const [search, setSearch, resetSearch] = useInputState("")
 
     useEffect(() => {
@@ -15,6 +15,7 @@ const Header = ({ selectedContact, searchContacts, setFilteredContacts }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
+        if (filteredContacts[0]) selectContact(filteredContacts[0].id)
         resetSearch()
     }
 

@@ -30,7 +30,7 @@ const Contacts = () => {
     return (
         <div className="Contacts">
             <LeftColumn contacts={contacts} selectContact={selectContact} />
-            <RightColumn contacts={contacts} selectedContact={selectedContact} />
+            <RightColumn contacts={contacts} selectContact={selectContact} selectedContact={selectedContact} />
         </div>
     )
 }

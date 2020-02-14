@@ -3,7 +3,7 @@ import './RightColumn.css'
 import ContactGrid from '../ContactGrid/ContactGrid'
 import Header from '../Header/Header'
 
-const RightColumn = ({ contacts, selectedContact }) => {
+const RightColumn = ({ contacts, selectContact, selectedContact }) => {
     const [filteredContacts, setFilteredContacts] = useState([])
     const [searchContacts, setSearchContacts] = useState([])
 
@@ -23,8 +23,14 @@ const RightColumn = ({ contacts, selectedContact }) => {
 
     return (
         <div className="RightColumn">
-            <Header selectedContact={selectedContact} searchContacts={searchContacts} setFilteredContacts={setFilteredContacts} />
-            <ContactGrid filteredContacts={filteredContacts} />
+            <Header 
+                selectContact={selectContact} 
+                selectedContact={selectedContact} 
+                searchContacts={searchContacts} 
+                filteredContacts={filteredContacts} 
+                setFilteredContacts={setFilteredContacts} 
+            />
+            <ContactGrid selectContact={selectContact} filteredContacts={filteredContacts} />
         </div>
     )
 }

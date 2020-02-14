@@ -1,9 +1,9 @@
 import React from 'react'
 import './Contact.css'
 
-const Contact = ({ name, avatar }) => {
+const Contact = ({ name, avatar, selectContact }) => {
     return (
-        <div className="Contact">
+        <div onClick={selectContact} className="Contact">
             <img className="Contact-img" src={avatar} alt={name}/>
             {name}
         </div>
