@@ -18,6 +18,8 @@ const ContactGrid = ({ filteredContacts }) => {
         else setGridContacts(filteredContacts.slice(currentPage * contactsPerPage - contactsPerPage, currentPage * contactsPerPage))
     }, [currentPage, filteredContacts])
 
+    useEffect(() => setCurrentPage(1), [filteredContacts])
+
     return (
         <div className="ContactGrid">
             <div className="ContactGrid-grid">

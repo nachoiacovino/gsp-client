@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Header.css'
 import SearchBar from '../SearchBar/SearchBar'
+import useInputState from '../../hooks/useInputState'
 
-const Header = ({ selectedContact }) => {
+
+const Header = ({ selectedContact, searchContacts, setFilteredContacts }) => {
+    const [search, setSearch, resetSearch] = useInputState("")
+
+    useEffect(() => {
+        setFilteredContacts(
+            searchContacts.filter(contact => contact.name.toLowerCase().includes(search.toLowerCase()))
+        )
+    }, [search, searchContacts, setFilteredContacts])
+    
+    const handleSubmit = e => {
+        e.preventDefault()
+        console.log("hellooo")
+        resetSearch()
+    }
+
     return (
         <div className="Header">
             {selectedContact && 
@@ -14,7 +30,7 @@ const Header = ({ selectedContact }) => {
                 </div>
             }
             <div className="Header-search">
-                <SearchBar />
+                <SearchBar search={search} setSearch={setSearch} handleSubmit={handleSubmit} />
             </div>
         </div>
     )

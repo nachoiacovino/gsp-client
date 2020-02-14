@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 92vh;
-  width: 22vw;
+  width: 100%;
   border: 1px solid black;
 }
 .ContactList .ContactList-contacts {

@@ -5,6 +5,7 @@ import Header from '../Header/Header'
 
 const RightColumn = ({ contacts, selectedContact }) => {
     const [filteredContacts, setFilteredContacts] = useState([])
+    const [searchContacts, setSearchContacts] = useState([])
 
     useEffect(() => {
         const filterContacts = arr => {
@@ -14,12 +15,15 @@ const RightColumn = ({ contacts, selectedContact }) => {
             }
             return result
         }
-        selectedContact && setFilteredContacts(filterContacts(selectedContact.connections))
+        if (selectedContact) {
+            setFilteredContacts(filterContacts(selectedContact.connections))
+            setSearchContacts(filterContacts(selectedContact.connections))
+        }
     }, [contacts, selectedContact])
 
     return (
         <div className="RightColumn">
-            <Header selectedContact={selectedContact} />
+            <Header selectedContact={selectedContact} searchContacts={searchContacts} setFilteredContacts={setFilteredContacts} />
             <ContactGrid filteredContacts={filteredContacts} />
         </div>
     )
