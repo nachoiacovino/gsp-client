@@ -4,7 +4,8 @@
   justify-content: space-between;
   height: 92vh;
   width: 100%;
-  border: 1px solid black;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
 }
 .ContactList .ContactList-contacts {
   padding: 20px;

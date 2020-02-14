@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: space-between;
   height: 12vh;
-  border: 1px solid black;
 }
 .Header .Header-contact {
   display: flex;
