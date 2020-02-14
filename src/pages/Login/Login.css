@@ -20,19 +20,36 @@
   padding-left: 2vw;
 }
 .Login .Login-form .Login-title h1 {
+  margin: 0;
   margin-bottom: 1vh;
 }
-.Login .Login-form .Login-input {
+.Login .Login-form form .Login-input {
   display: block;
   width: 80%;
   margin-bottom: 1vh;
   padding: 0.5vw;
 }
-.Login .Login-form .Login-checkbox {
+.Login .Login-form form .Login-checkbox {
   display: block;
   margin-bottom: 1vh;
 }
-.Login .Login-form button {
+.Login .Login-form form button {
   padding: 0.5vh 2vw;
   border-radius: 30px;
+}
+.Login .Login-form .Login-info {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 4%;
+  width: 70%;
+  padding: 0.5vw 1vw;
+  margin: 1.5vh 0;
+  border-radius: 30px;
+}
+.Login .Login-form .Login-info.info {
+  background-color: lightgray;
+}
+.Login .Login-form .Login-info.error {
+  background-color: #f85555;
 }

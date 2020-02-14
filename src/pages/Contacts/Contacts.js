@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import './Contacts.css'
 import LeftColumn from '../../components/LeftColumn/LeftColumn'
 import RightColumn from '../../components/RightColumn/RightColumn'
 
-const Contacts = () => {
+const Contacts = ({ isLoggedIn }) => {
     const [contacts, setContacts] = useState([])
     const [selectedContact, setSelectedContact] = useState([])
 
@@ -26,10 +27,15 @@ const Contacts = () => {
     }
 
     return (
-        <div className="Contacts">
-            <LeftColumn contacts={contacts} selectContact={selectContact} />
-            <RightColumn contacts={contacts} selectContact={selectContact} selectedContact={selectedContact} />
-        </div>
+        <>
+            {isLoggedIn 
+                ?   <div className="Contacts">
+                        <LeftColumn contacts={contacts} selectContact={selectContact} />
+                        <RightColumn contacts={contacts} selectContact={selectContact} selectedContact={selectedContact} />
+                    </div>
+                :   <Redirect to="/" />
+            }
+        </>
     )
 }
 

@@ -23,25 +23,46 @@
 
     .Login-title {
       h1 {
+        margin: 0;
         margin-bottom: 1vh;
       }
     }
 
-    .Login-input {
-      display: block;
-      width: 80%;
-      margin-bottom: 1vh;
-      padding: 0.5vw;
+    form {
+      .Login-input {
+        display: block;
+        width: 80%;
+        margin-bottom: 1vh;
+        padding: 0.5vw;
+      }
+
+      .Login-checkbox {
+        display: block;
+        margin-bottom: 1vh;
+      }
+
+      button {
+        padding: 0.5vh 2vw;
+        border-radius: 30px;
+      }
     }
 
-    .Login-checkbox {
-      display: block;
-      margin-bottom: 1vh;
-    }
-
-    button {
-      padding: 0.5vh 2vw;
+    .Login-info {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      height: 4%;
+      width: 70%;
+      padding: 0.5vw 1vw;
+      margin: 1.5vh 0;
       border-radius: 30px;
+
+      &.info {
+        background-color: lightgray;
+      }
+      &.error {
+        background-color: rgb(248, 85, 85);
+      }
     }
   }
 }
