@@ -25,8 +25,6 @@ const Contacts = () => {
         setSelectedContact(contacts.filter(contact => contact.id === id)[0])
     }
 
-    console.log(contacts.slice(0,3))
-
     return (
         <div className="Contacts">
             <LeftColumn contacts={contacts} selectContact={selectContact} />
