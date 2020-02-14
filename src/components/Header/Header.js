@@ -12,10 +12,9 @@ const Header = ({ selectedContact, searchContacts, setFilteredContacts }) => {
             searchContacts.filter(contact => contact.name.toLowerCase().includes(search.toLowerCase()))
         )
     }, [search, searchContacts, setFilteredContacts])
-    
+
     const handleSubmit = e => {
         e.preventDefault()
-        console.log("hellooo")
         resetSearch()
     }
 
