@@ -13,6 +13,8 @@ const ContactList = ({ contacts, selectContact }) => {
         else setListContacts(contacts.slice(currentPage * contactsPerPage - contactsPerPage, currentPage * contactsPerPage))
     }, [currentPage, contacts])
 
+    useEffect(() => setCurrentPage(1), [contacts])
+
     return (
         <div className="ContactList">
             <div className="ContactList-contacts">
