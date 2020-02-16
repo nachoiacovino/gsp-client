@@ -7,8 +7,8 @@ import useInputState from '../../hooks/useInputState'
 import useToggleState from '../../hooks/useToggleState'
 
 const Login = ({ history, setIsLoggedIn, setToken }) => {
-    const [email, setEmail, resetEmail] = useInputState("")
-    const [password, setPassword, resetPassword] = useInputState("")
+    const [email, setEmail, resetEmail] = useInputState(window.localStorage.getItem("email") || "")
+    const [password, setPassword, resetPassword] = useInputState(window.localStorage.getItem("password") || "")
     const [checkbox, setCheckBox] = useToggleState()
     const [status, setStatus] = useState("")
     const emailRef = useRef()
@@ -23,6 +23,12 @@ const Login = ({ history, setIsLoggedIn, setToken }) => {
             const res = await axios.post("http://localhost:3001/login", { email, password })
             setStatus(res.data.status)
             setToken(res.data.token)
+            window.localStorage.setItem("token", res.data.token)
+            if (checkbox === true) {
+                window.localStorage.setItem("email", email)
+                window.localStorage.setItem("password", password)
+                window.localStorage.setItem("checkbox", checkbox)
+            }
         }
         handleLogin()
         resetEmail()
