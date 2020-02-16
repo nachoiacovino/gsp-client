@@ -20,7 +20,9 @@ const Login = ({ history }) => {
     const handleSubmit = e => {
         e.preventDefault()
         const handleLogin = async () => {
-            const res = await axios.post("http://localhost:3001/login", { email, password })
+            let res = []
+            if (process.env.NODE_ENV !== 'production') res = await axios.post("http://localhost:3001/login", { email, password })
+            else res = await axios.post("https://gsp-server.now.sh/login", { email, password })
             setStatus(res.data.status)
             window.localStorage.setItem("token", res.data.token)
             if (checkbox === true) {
