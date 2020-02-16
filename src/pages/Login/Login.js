@@ -6,9 +6,9 @@ import './Login.css'
 import useInputState from '../../hooks/useInputState'
 import useToggleState from '../../hooks/useToggleState'
 
-const Login = ({ history, setIsLoggedIn, setToken }) => {
-    const [email, setEmail, resetEmail] = useInputState(window.localStorage.getItem("email") || "")
-    const [password, setPassword, resetPassword] = useInputState(window.localStorage.getItem("password") || "")
+const Login = ({ history }) => {
+    const [email, setEmail, resetEmail] = useInputState(localStorage.email || "")
+    const [password, setPassword, resetPassword] = useInputState(localStorage.password || "")
     const [checkbox, setCheckBox] = useToggleState()
     const [status, setStatus] = useState("")
     const emailRef = useRef()
@@ -22,12 +22,10 @@ const Login = ({ history, setIsLoggedIn, setToken }) => {
         const handleLogin = async () => {
             const res = await axios.post("http://localhost:3001/login", { email, password })
             setStatus(res.data.status)
-            setToken(res.data.token)
             window.localStorage.setItem("token", res.data.token)
             if (checkbox === true) {
-                window.localStorage.setItem("email", email)
-                window.localStorage.setItem("password", password)
-                window.localStorage.setItem("checkbox", checkbox)
+                localStorage.setItem("email", email)
+                localStorage.setItem("password", password)
             }
         }
         handleLogin()
@@ -38,11 +36,11 @@ const Login = ({ history, setIsLoggedIn, setToken }) => {
 
     useEffect(() => {
         if (status === "success") {
-            setIsLoggedIn(true)
+            sessionStorage.setItem("isLoggedIn", true)
             history.push("/contacts")
         }
         else if (status === "error" || status === "empty") emailRef.current.focus()
-    }, [status, history, setIsLoggedIn])
+    }, [status, history])
 
     const errorOrEmpty = () => {
         if (status === "error") return "Incorrect username/password. Please try again."
@@ -71,12 +69,12 @@ const Login = ({ history, setIsLoggedIn, setToken }) => {
                     </label>
                     <button type="submit">Login</button>
                 </form>
-                    <div className={`Login-info ${(status === "error" || status === "empty") && "error"}`}>
-                        {errorOrEmpty()}
-                    </div>
+                <div className={`Login-info ${(status === "error" || status === "empty") && "error"}`}>
+                    {errorOrEmpty()}
+                </div>
             </div>
         </div>
-    );
+    )
 }
 
 export default withRouter(Login)

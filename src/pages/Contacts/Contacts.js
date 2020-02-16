@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import './Contacts.css'
 import LeftColumn from '../../components/LeftColumn/LeftColumn'
 import RightColumn from '../../components/RightColumn/RightColumn'
 
-const Contacts = ({ isLoggedIn, token }) => {
+const Contacts = ({ history }) => {
+    const [isLoggedIn] = useState(sessionStorage.isLoggedIn === "true")
+    const [token] = useState(localStorage.token)
     const [contacts, setContacts] = useState([])
     const [selectedContact, setSelectedContact] = useState([])
 
@@ -13,11 +15,11 @@ const Contacts = ({ isLoggedIn, token }) => {
         const dynamicSort = property => (a, b) => a[property].localeCompare(b[property])  
         const fetchData = async () => {
             const res = await axios.get("http://localhost:3001/contacts", { headers: {"Authorization" : `Bearer ${token}`} })
-            if (res.data.name === "JsonWebTokenError") return <Redirect to="/" />
+            if (res.data.name) history.push("/")
             else setContacts(res.data.sort(dynamicSort("name")))
         }
         fetchData()
-    }, [token])
+    }, [token, history])
 
     useEffect(() => {
         setSelectedContact(contacts[0])
@@ -34,10 +36,10 @@ const Contacts = ({ isLoggedIn, token }) => {
                         <LeftColumn contacts={contacts} selectContact={selectContact} />
                         <RightColumn contacts={contacts} selectContact={selectContact} selectedContact={selectedContact} />
                     </div>
-                :   <Redirect to="/" />
+                :   history.push("/")
             }
         </>
     )
 }
 
-export default Contacts
+export default withRouter(Contacts)
