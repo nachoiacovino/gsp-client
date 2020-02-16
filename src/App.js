@@ -7,8 +7,7 @@ import { Switch, Route } from 'react-router-dom'
 const App = () => {
     const [token, setToken] = useState("")
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-
-    console.log(token)
+    
     return (
         <Switch>
             <Route exact path="/" render={() => <Login setIsLoggedIn={setIsLoggedIn} setToken={setToken} />} />

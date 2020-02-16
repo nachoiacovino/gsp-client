@@ -36,8 +36,6 @@ const Login = ({ history, setIsLoggedIn, setToken }) => {
             history.push("/contacts")
         }
         else if (status === "error" || status === "empty") emailRef.current.focus()
-
-        console.log(status)
     }, [status, history, setIsLoggedIn])
 
     const errorOrEmpty = () => {
