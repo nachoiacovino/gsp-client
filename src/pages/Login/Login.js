@@ -6,7 +6,7 @@ import './Login.css'
 import useInputState from '../../hooks/useInputState'
 import useToggleState from '../../hooks/useToggleState'
 
-const Login = ({ history, setIsLoggedIn }) => {
+const Login = ({ history, setIsLoggedIn, setToken }) => {
     const [email, setEmail, resetEmail] = useInputState("")
     const [password, setPassword, resetPassword] = useInputState("")
     const [checkbox, setCheckBox] = useToggleState()
@@ -21,7 +21,8 @@ const Login = ({ history, setIsLoggedIn }) => {
         e.preventDefault()
         const handleLogin = async () => {
             const res = await axios.post("http://localhost:3001/login", { email, password })
-            setStatus(res.data)
+            setStatus(res.data.status)
+            setToken(res.data.token)
         }
         handleLogin()
         resetEmail()
@@ -34,8 +35,16 @@ const Login = ({ history, setIsLoggedIn }) => {
             setIsLoggedIn(true)
             history.push("/contacts")
         }
-        else if (status === "error") emailRef.current.focus()
-    }, [status, history])
+        else if (status === "error" || status === "empty") emailRef.current.focus()
+
+        console.log(status)
+    }, [status, history, setIsLoggedIn])
+
+    const errorOrEmpty = () => {
+        if (status === "error") return "Incorrect username/password. Please try again."
+        else if (status === "empty") return "Please enter email and password."
+        else return
+    }
 
     return (
         <div className="Login">
@@ -58,10 +67,8 @@ const Login = ({ history, setIsLoggedIn }) => {
                     </label>
                     <button type="submit">Login</button>
                 </form>
-                    <div className={`Login-info ${status === "error" && "error"}`}>
-                    {status === "error" &&
-                        "Incorrect username/password. Please try again."
-                    }
+                    <div className={`Login-info ${(status === "error" || status === "empty") && "error"}`}>
+                        {errorOrEmpty()}
                     </div>
             </div>
         </div>

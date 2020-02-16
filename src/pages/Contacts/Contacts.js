@@ -5,18 +5,19 @@ import './Contacts.css'
 import LeftColumn from '../../components/LeftColumn/LeftColumn'
 import RightColumn from '../../components/RightColumn/RightColumn'
 
-const Contacts = ({ isLoggedIn }) => {
+const Contacts = ({ isLoggedIn, token }) => {
     const [contacts, setContacts] = useState([])
     const [selectedContact, setSelectedContact] = useState([])
 
     useEffect(() => {
         const dynamicSort = property => (a, b) => a[property].localeCompare(b[property])  
         const fetchData = async () => {
-            const res = await axios.get("http://localhost:3001/contacts")
-            setContacts(res.data.sort(dynamicSort("name")))
+            const res = await axios.get("http://localhost:3001/contacts", { headers: {"Authorization" : `Bearer ${token}`} })
+            if (res.data.name === "JsonWebTokenError") return <Redirect to="/" />
+            else setContacts(res.data.sort(dynamicSort("name")))
         }
         fetchData()
-    }, [])
+    }, [token])
 
     useEffect(() => {
         setSelectedContact(contacts[0])
