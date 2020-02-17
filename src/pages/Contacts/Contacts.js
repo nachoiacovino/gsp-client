@@ -14,9 +14,7 @@ const Contacts = ({ history }) => {
     useEffect(() => {
         const dynamicSort = property => (a, b) => a[property].localeCompare(b[property])  
         const fetchData = async () => {
-            let res = []
-            if (process.env.NODE_ENV !== 'production') res = await axios.get("http://localhost:3001/contacts", { headers: {"Authorization" : `Bearer ${token}`} })
-            else res = await axios.get("https://gsp-server.now.sh/contacts", { headers: {"Authorization" : `Bearer ${token}`} })
+            const res = await axios.get("http://localhost:3001/contacts", { headers: {"Authorization" : `Bearer ${token}`} })
             if (res.data.name) history.push("/")
             else setContacts(res.data.sort(dynamicSort("name")))
         }
