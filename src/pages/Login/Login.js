@@ -24,7 +24,7 @@ const Login = ({ history }) => {
 
     let url;
     if (process.env.NODE_ENV === "production") {
-      url = "https://gsp-server-3w1sr9578.now.sh/login";
+      url = "https://admiring-borg-6dec5e.netlify.app/login";
     } else {
       url = "http://localhost:3001/login";
     }
